@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import '../../styles/card.css';
 
-const Card = ({ name, url }) => {
+const Card = ({ name, url, group, id }) => {
   return (
     <div className='card'>
       <img className='card-img-top' src='' alt={`${name} image`} />
@@ -15,7 +16,7 @@ const Card = ({ name, url }) => {
 
         </p>
         <div className='card__interact d-flex justify-content-between'>
-          <a href='#' className='btn btn-primary'>Learn more!</a>
+          <Link to={`/${group}/${id}`} className='btn btn-primary'>Learn more!</Link>
           {/* falta el boton de like */}
           <p>a</p>
         </div>

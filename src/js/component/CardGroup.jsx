@@ -14,7 +14,12 @@ const CardGroup = ({ items, title }) => {
       <div className='cardGroup__content'>
         {
           items.map((item) => {
-            return <Card key={item.uid} name={item.name} url={item.url} />
+            return <Card
+              key={item.uid}
+              name={item.name}
+              url={item.url}
+              group={title.toLowerCase()}
+              id={item.uid} />
           })
         }
       </div>
