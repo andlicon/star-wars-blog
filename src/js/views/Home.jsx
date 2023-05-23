@@ -8,21 +8,7 @@ const Home = () => {
   return (
     <>
       {
-        endpoints.map((endp, index) => {
-          return (
-            <div key={index} className='card-group'>
-              <h2>{endp}</h2>
-              {
-                console.log(store[endp].results)
-                // store[endp].results.map((elements, index) => {
-                //   <p key={index}>
-                //     {'ajo'}
-                //   </p>
-                // })
-              }
-            </div>
-          )
-        })
+
       }
     </>
   );

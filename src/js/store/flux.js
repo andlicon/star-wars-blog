@@ -2,27 +2,17 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       urlBase: 'https://www.swapi.tech/api',
-      endpoints: ['people', 'planets', 'vehicles'],
-      people: {
-        results: [],
-        next: null
-      },
-      planets: {
-        results: [],
-        next: null
-      },
-      vehicles: {
-        results: [],
-        next: null
-      },
-      favorites: null,
-      alert: null
+      people: [],
+      planets: [],
+      vehicles: [],
+      favorites: null
     },
     actions: {
       getAllItems: () => {
         let store = getStore();
+        const endpoints = ['people', 'planets', 'vehicles'];
 
-        store.endpoints.forEach(async (endp) => {
+        endpoints.forEach(async (endp) => {
           const url = `${store.urlBase}/${endp}/`;
 
           try {
@@ -30,10 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             const data = await response.json();
 
             setStore({
-              [endp]: {
-                results: data.results,
-                next: data.next
-              }
+              [endp]: data.results
             });
           }
           catch (error) {
