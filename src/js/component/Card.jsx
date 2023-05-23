@@ -1,20 +1,20 @@
 import React from 'react';
 import '../../styles/card.css';
 
-const Card = (props) => {
+const Card = ({ name, url }) => {
   return (
     <div className='card'>
-      <img className='card-img-top' src='' alt={`${props.name} image`} />
+      <img className='card-img-top' src='' alt={`${name} image`} />
       <div className='card-body'>
         <h5 className='card-title'>
           {
-            props.name
+            name
           }
         </h5>
         <p className='card-text'>
 
         </p>
-        <div className='card__interact d-flex'>
+        <div className='card__interact d-flex justify-content-between'>
           <a href='#' className='btn btn-primary'>Learn more!</a>
           {/* falta el boton de like */}
           <p>a</p>
