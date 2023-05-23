@@ -19,8 +19,7 @@ const injectContext = PassedComponent => {
 
     useEffect(() => {
       //Makes the first fetch and set it to the store, with the next pag
-
-      state.actions.allItems()
+      state.actions.getAllItems()
     }, []);
 
     return (

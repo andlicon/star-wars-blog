@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       alert: null
     },
     actions: {
-      allItems: () => {
+      getAllItems: () => {
         let store = getStore();
 
         store.endpoints.forEach(async (endp) => {
