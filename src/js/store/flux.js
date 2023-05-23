@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       people: [],
       planets: [],
       vehicles: [],
-      favorites: null
+      favorites: []
     },
     actions: {
       getAllItems: () => {
@@ -28,6 +28,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
       },
+      addFavorite: (name, group, id) => {
+        const favorites = getStore().favorites;
+
+        setStore({ favorites: [...favorites, { name, group, id }] })
+      }
     }
   };
 };
