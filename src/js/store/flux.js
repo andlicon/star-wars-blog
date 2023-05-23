@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       urlBase: 'https://www.swapi.tech/api',
       endpoints: ['people', 'planets', 'vehicles'],
+      favorites: null,
       alert: null
     },
     actions: {
