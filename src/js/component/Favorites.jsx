@@ -4,8 +4,6 @@ import { Context } from '../store/appContext';
 const Favorites = () => {
   const { store: { favorites } } = useContext(Context);
 
-  console.log(favorites);
-
   return (
     <div className='dropdown'>
       <button className='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
