@@ -3,18 +3,23 @@ import { Context } from '../store/appContext';
 import '../../styles/home.css';
 
 const Home = () => {
-  const { store: { endpoints } } = useContext(Context);
-
-  console.log(endpoints);
+  const { store, store: { endpoints } } = useContext(Context);
 
   return (
     <>
       {
-        endpoints.map((endp) => {
+        endpoints.map((endp, index) => {
           return (
-            <div className='div'>
+            <div key={index} className='card-group'>
               <h2>{endp}</h2>
-
+              {
+                console.log(store[endp].results)
+                // store[endp].results.map((elements, index) => {
+                //   <p key={index}>
+                //     {'ajo'}
+                //   </p>
+                // })
+              }
             </div>
           )
         })

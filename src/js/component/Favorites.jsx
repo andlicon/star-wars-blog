@@ -11,20 +11,6 @@ const Favorites = () => {
       </button>
       <ul className='dropdown-menu'>
         {
-          (favorites == null)
-            ? <li className='dropdown-item'>(Empty)</li>
-            : favorites.map((element, index) => {
-              return (
-                <li key={index}
-                  className='dropdown-item'>
-                  {
-                    element
-                  }
-                </li>
-              )
-            })
-        }
-        {
           /* <li><a className='dropdown-item' href='#'>Action</a></li>
         <li><a className='dropdown-item' href='#'>Another action</a></li>
         <li><a className='dropdown-item' href='#'>Something else here</a></li> */
