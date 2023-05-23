@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import '../../styles/header.css';
 import logo from '../../img/sw-logo.png';
+// components
+import Favorites from './Favorites.jsx';
 
 const Header = () => {
   return (
@@ -16,9 +19,7 @@ const Header = () => {
           <img src={logo} alt='logo' className='logo' />
         </Link>
         {/* Favorites */}
-        <div className="favorites">
-          favorites
-        </div>
+        <Favorites />
       </div>
     </div>
   );
