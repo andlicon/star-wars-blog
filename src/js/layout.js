@@ -1,9 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ScrollToTop from './component/scrollToTop';
-
-import Home from './views/Home.jsx';
+// components
 import injectContext from './store/appContext';
+import ScrollToTop from './component/scrollToTop';
+import Header from './component/Header.jsx';
+// views
+import Home from './views/Home.jsx';
+
 
 const Layout = () => {
   const basename = process.env.BASENAME || '';
@@ -12,6 +15,7 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
+          <Header />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/character' element={<Home />} />
