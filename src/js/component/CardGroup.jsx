@@ -1,19 +1,20 @@
 import React from 'react';
+import '../../styles/cardGroup.css'
+// components
+import Card from './Card.jsx';
 
-const CardGroup = (props) => {
-  console.log(props.items);
-
+const CardGroup = ({ items, title }) => {
   return (
     <div className='cardGroup'>
       <h2 className='cardGroup__title text-danger'>
         {
-          props.title
+          title
         }
       </h2>
-      <div className='cardGroup__content d-flex flex-nowrap'>
+      <div className='cardGroup__content'>
         {
-          props.items.map((element, index) => {
-            return <p key={index}>{element.name}</p>
+          items.map((item) => {
+            return <Card key={item.uid} name={item.name} />
           })
         }
       </div>
