@@ -2,17 +2,18 @@ import React from 'react';
 
 const Favorites = () => {
   return (
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Action
+    <div className='dropdown'>
+      <button className='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+        Favorites
       </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
+      <ul className='dropdown-menu'>
+        <p>(Empty)</p>
+        {
+          /* <li><a className='dropdown-item' href='#'>Action</a></li>
+        <li><a className='dropdown-item' href='#'>Another action</a></li>
+        <li><a className='dropdown-item' href='#'>Something else here</a></li> */
+        }
+      </ul>
     </div>
   );
 };
