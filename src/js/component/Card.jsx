@@ -50,7 +50,11 @@ const Card = ({ name, url, toShow, group, id, isFavorite }) => {
           }
         </div>
         <div className='card__interact d-flex justify-content-between'>
-          <Link to={`/${group}/${id}`} className='btn btn-outline-primary'>Learn more!</Link>
+          <Link
+            to={url.replace(/https.+\/api/, '')}
+            className='btn btn-outline-primary'>
+            Learn more!
+          </Link>
           {/* falta el boton de like */}
           <button
             className='btn btn-outline-warning'

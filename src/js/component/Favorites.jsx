@@ -7,8 +7,17 @@ const Favorites = () => {
 
   return (
     <div className='dropdown'>
-      <button className='btn btn-secondary dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+      <button
+        className='btn btn-primary dropdown-toggle px-2'
+        type='button'
+        data-bs-toggle='dropdown'
+        aria-expanded='false'>
         Favorites
+        <span className='btn btn-secondary mx-2'>
+          {
+            favorites.length
+          }
+        </span>
       </button>
       <ul className='dropdown-menu'>
         {
