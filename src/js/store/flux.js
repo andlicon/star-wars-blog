@@ -37,6 +37,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         setStore({ favorites: [...favorites, { name, url }] })
       },
+      deleteFavorite: (name, url) => {
+        const favorites = getStore().favorites;
+        const newFavorites = favorites.filter((element) => {
+          return (element.name != name, url != element.url);
+        });
+
+        setStore({ favorites: newFavorites });
+      },
       getProperties: async (url, toShow) => {
         let propertiesToShow = {};
 

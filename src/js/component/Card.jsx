@@ -7,15 +7,23 @@ const Card = ({ name, url, toShow, isFavorite }) => {
   // hooks
   const { actions: {
     addFavorite,
-    getProperties }
+    getProperties,
+    deleteFavorite }
   } = useContext(Context);
   const [properties, setProperties] = useState({});
   const [selected, setSelected] = useState(isFavorite);
 
   const handlerLike = () => {
     const newUrl = url.replace(/https.+\/api/, '');
+
+    if (selected) {
+      deleteFavorite(name, newUrl);
+    }
+    else {
+      addFavorite(name, newUrl);
+    }
+
     setSelected(!selected);
-    addFavorite(name, newUrl);
   }
 
   useEffect(() => {
