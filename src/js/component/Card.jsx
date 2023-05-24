@@ -3,22 +3,23 @@ import { Link } from 'react-router-dom'
 import '../../styles/card.css';
 import { Context } from '../store/appContext';
 
-//No necesito GROUP ni ID, con URL determinar el /people/1 y tal
-
-const Card = ({ name, url, toShow, group, id, isFavorite }) => {
+const Card = ({ name, url, toShow, isFavorite }) => {
   // hooks
-  const { actions } = useContext(Context);
+  const { actions: {
+    addFavorite,
+    getProperties }
+  } = useContext(Context);
   const [properties, setProperties] = useState({});
   const [selected, setSelected] = useState(isFavorite);
 
   const handlerLike = () => {
     const newUrl = url.replace(/https.+\/api/, '');
     setSelected(!selected);
-    actions.addFavorite(name, newUrl);
+    addFavorite(name, newUrl);
   }
 
   useEffect(() => {
-    actions.getProperties(url, toShow)
+    getProperties(url, toShow)
       .then(response => setProperties(response))
   }, []);
 
@@ -55,7 +56,6 @@ const Card = ({ name, url, toShow, group, id, isFavorite }) => {
             className='btn btn-outline-primary'>
             Learn more!
           </Link>
-          {/* falta el boton de like */}
           <button
             className='btn btn-outline-warning'
             onClick={handlerLike}>

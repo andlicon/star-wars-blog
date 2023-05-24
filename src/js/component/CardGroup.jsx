@@ -19,7 +19,6 @@ const CardGroup = ({ items, title, toShow }) => {
               name={item.name}
               url={item.url}
               toShow={toShow}
-              id={item.uid}
               isFavorite={item.isFavorite} />
           })
         }
