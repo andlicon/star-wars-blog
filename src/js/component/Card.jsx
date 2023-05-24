@@ -13,10 +13,10 @@ const Card = ({ name, url, redirect, toShow, isFavorite }) => {
   const { store } = useContext(Context);
   const [properties, setProperties] = useState({});
   //Matches with its own representation inside the results array
-  const [favorite, setFavorite] = useState(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
+  const [isfavorite, setIsFavorite] = useState(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
 
   const handlerLike = () => {
-    if (isFavorite) {
+    if (isfavorite) {
       deleteFavorite(redirect);
     }
     else {
@@ -31,7 +31,7 @@ const Card = ({ name, url, redirect, toShow, isFavorite }) => {
 
   //When its own representation inside the results array change, it change too
   useEffect(() => {
-    setFavorite(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
+    setIsFavorite(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
   }, [store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite]);
 
   return (
@@ -70,7 +70,7 @@ const Card = ({ name, url, redirect, toShow, isFavorite }) => {
           <button
             className='btn btn-outline-warning'
             onClick={handlerLike}>
-            <i className={`bi ${favorite ? 'bi-heart-fill' : 'bi-heart'} favorite-icon`}></i>
+            <i className={`bi ${isFavorite ? 'bi-heart-fill' : 'bi-heart'} favorite-icon`}></i>
           </button>
         </div>
       </div>
