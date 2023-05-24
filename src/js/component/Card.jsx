@@ -12,8 +12,9 @@ const Card = ({ name, url, toShow, group, id, isFavorite }) => {
   const [selected, setSelected] = useState(isFavorite);
 
   const handlerLike = () => {
+    const newUrl = url.replace(/https.+\/api/, '');
     setSelected(!selected);
-    actions.addFavorite(name, group, id);
+    actions.addFavorite(name, newUrl);
   }
 
   useEffect(() => {

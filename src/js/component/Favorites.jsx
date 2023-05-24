@@ -19,7 +19,7 @@ const Favorites = () => {
                 <li key={index}>
                   <Link
                     className='dropdown-item'
-                    to={`/${element.url}`}>
+                    to={element.url}>
                     {element.name}
                   </Link>
                 </li>

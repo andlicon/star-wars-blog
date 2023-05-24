@@ -32,10 +32,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
       },
-      addFavorite: (name, group, id) => {
+      addFavorite: (name, url) => {
         const favorites = getStore().favorites;
 
-        setStore({ favorites: [...favorites, { name, group, id }] })
+        setStore({ favorites: [...favorites, { name, url }] })
       },
       getProperties: async (url, toShow) => {
         let propertiesToShow = {};
