@@ -28,12 +28,19 @@ const Card = ({ name, url, toShow, group, id }) => {
             name
           }
         </h5>
-        <div className='card-text'>
+        <div className='card-content mb-3'>
           {
             Object.keys(properties).map((key, index) => {
               return (
-                <p key={index}>
-                  <span>{key}</span>: {properties[key]}
+                <p className='card-text' key={index}>
+                  <span className='card-text--bold'>
+                    {
+                      key.replaceAll('_', ' ')
+                    }
+                  </span>:
+                  {
+                    ` ${properties[key]}`
+                  }
                 </p>
               )
             })

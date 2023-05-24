@@ -1,6 +1,7 @@
 .cardGroup {
     overflow-x: scroll;
 }
+
 .cardGroup__content {
     display: flex;
     gap: 2em;
@@ -9,7 +10,6 @@
 
 .cardGroup__content .card {
     /* box */
-    height: 400px;
     flex-basis: 400px;
     flex-grow: 0;
     flex-shrink: 0;
