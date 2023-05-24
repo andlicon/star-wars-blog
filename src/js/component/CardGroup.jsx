@@ -3,7 +3,7 @@ import '../../styles/cardGroup.css'
 // components
 import Card from './Card.jsx';
 
-const CardGroup = ({ items, title, group }) => {
+const CardGroup = ({ items, title, toShow }) => {
   return (
     <div className='cardGroup my-4'>
       <h2 className='cardGroup__title text-danger'>
@@ -18,7 +18,7 @@ const CardGroup = ({ items, title, group }) => {
               key={item.uid}
               name={item.name}
               url={item.url}
-              group={group}
+              toShow={toShow}
               id={item.uid} />
           })
         }

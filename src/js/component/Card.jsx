@@ -1,39 +1,20 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import '../../styles/card.css';
 import { Context } from '../store/appContext';
 
-const Card = ({ name, url, group, id }) => {
+//No necesito GROUP ni ID, con URL determinar el /people/1 y tal
 
+const Card = ({ name, url, toShow, group, id }) => {
+  // hooks
   const { actions } = useContext(Context);
 
   const handlerLike = () => {
     actions.addFavorite(name, group, id);
   }
 
-  const toDisplay = () => {
-    let propiertiesArray = [];
-
-    if (group == 'people') {
-      propiertiesArray = ['gender', 'hair_color', 'eye_color'];
-    }
-    else if (group == 'planets') {
-      propiertiesArray = ['population', 'terrain'];
-    }
-    else if (group == 'vehicles') {
-      propiertiesArray = ['crew', 'passengers', 'cargo_capacity', 'cost_in_credits'];
-    }
-
-    return propiertiesArray;
-  }
-
   useEffect(() => {
-    const properties = toDisplay();
-    console.log(properties);
-
-    fetch(url).
-      then(response => response.json())
-      .then(data => console.log(data.result));
+    console.log(toShow);
   }, []);
 
   return (
