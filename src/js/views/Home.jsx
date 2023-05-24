@@ -10,11 +10,11 @@ const Home = () => {
   return (
     <div className='container'>
       {/* characters */}
-      <CardGroup title='Chracters' items={people} />
+      <CardGroup title='Chracters' group='people' items={people} />
       {/* planets */}
-      <CardGroup title='Planets' items={planets} />
+      <CardGroup title='Planets' group='planets' items={planets} />
       {/* vehicles */}
-      <CardGroup title='Vehicles' items={vehicles} />
+      <CardGroup title='Vehicles' group='vehicles' items={vehicles} />
     </div>
   );
 };
