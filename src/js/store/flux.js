@@ -33,16 +33,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
       addFavorite: (name, url) => {
+        const changeFavoriteStatus = getActions().changeFavoriteStatus;
         const favorites = getStore().favorites;
 
+        changeFavoriteStatus(url, true);
         setStore({ favorites: [...favorites, { name, url }] })
       },
-      deleteFavorite: (name, url) => {
+      deleteFavorite: (url) => {
+        const changeFavoriteStatus = getActions().changeFavoriteStatus;
         const favorites = getStore().favorites;
-        const newFavorites = favorites.filter((element) => {
-          return (element.name != name, url != element.url);
-        });
 
+        const newFavorites = favorites.filter((element) => {
+          return (url != element.url);
+        });
+        //updatear el state de los resultados (isFavorte)
+        changeFavoriteStatus(url, false);
         setStore({ favorites: newFavorites });
       },
       getProperties: async (url, toShow) => {
@@ -65,7 +70,17 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
 
         return propertiesToShow;
-      }
+      },
+      changeFavoriteStatus: (url, newStatus) => {
+        const group = url.split('/')[1];
+        const itemsList = getStore()[group];
+        const item = itemsList.find((element) => {
+          return element.url.endsWith(url);
+        });
+
+        item.isFavorite = newStatus;
+
+      },
     }
   };
 };

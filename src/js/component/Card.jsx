@@ -3,33 +3,36 @@ import { Link } from 'react-router-dom'
 import '../../styles/card.css';
 import { Context } from '../store/appContext';
 
-const Card = ({ name, url, toShow, isFavorite }) => {
+const Card = ({ name, url, redirect, toShow, isFavorite }) => {
   // hooks
   const { actions: {
     addFavorite,
     getProperties,
     deleteFavorite }
   } = useContext(Context);
+  const { store } = useContext(Context);
   const [properties, setProperties] = useState({});
-  const [selected, setSelected] = useState(isFavorite);
+  //Matches with its own representation inside the results array
+  const [favorite, setFavorite] = useState(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
 
   const handlerLike = () => {
-    const newUrl = url.replace(/https.+\/api/, '');
-
-    if (selected) {
-      deleteFavorite(name, newUrl);
+    if (isFavorite) {
+      deleteFavorite(redirect);
     }
     else {
-      addFavorite(name, newUrl);
+      addFavorite(name, redirect);
     }
-
-    setSelected(!selected);
   }
 
   useEffect(() => {
     getProperties(url, toShow)
       .then(response => setProperties(response))
   }, []);
+
+  //When its own representation inside the results array change, it change too
+  useEffect(() => {
+    setFavorite(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
+  }, [store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite]);
 
   return (
     <div className='card'>
@@ -60,14 +63,14 @@ const Card = ({ name, url, toShow, isFavorite }) => {
         </div>
         <div className='card__interact d-flex justify-content-between'>
           <Link
-            to={url.replace(/https.+\/api/, '')}
+            to={redirect}
             className='btn btn-outline-primary'>
             Learn more!
           </Link>
           <button
             className='btn btn-outline-warning'
             onClick={handlerLike}>
-            <i className={`bi ${selected ? 'bi-heart-fill' : 'bi-heart'} favorite-icon`}></i>
+            <i className={`bi ${favorite ? 'bi-heart-fill' : 'bi-heart'} favorite-icon`}></i>
           </button>
         </div>
       </div>

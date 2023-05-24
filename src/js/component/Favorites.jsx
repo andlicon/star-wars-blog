@@ -36,7 +36,7 @@ const Favorites = () => {
                   </Link>
                   <button
                     className='delete-button'
-                    onClick={() => deleteFavorite(element.name, element.url)}>
+                    onClick={() => deleteFavorite(element.url)}>
                     <i className='bi bi-trash-fill'></i>
                   </button>
                 </li>
