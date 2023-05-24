@@ -5,12 +5,14 @@ import { Context } from '../store/appContext';
 
 //No necesito GROUP ni ID, con URL determinar el /people/1 y tal
 
-const Card = ({ name, url, toShow, group, id }) => {
+const Card = ({ name, url, toShow, group, id, isFavorite }) => {
   // hooks
   const { actions } = useContext(Context);
   const [properties, setProperties] = useState({});
+  const [selected, setSelected] = useState(isFavorite);
 
   const handlerLike = () => {
+    setSelected(!selected);
     actions.addFavorite(name, group, id);
   }
 
@@ -47,9 +49,13 @@ const Card = ({ name, url, toShow, group, id }) => {
           }
         </div>
         <div className='card__interact d-flex justify-content-between'>
-          <Link to={`/${group}/${id}`} className='btn btn-primary'>Learn more!</Link>
+          <Link to={`/${group}/${id}`} className='btn btn-outline-primary'>Learn more!</Link>
           {/* falta el boton de like */}
-          <button onClick={handlerLike}>Like</button>
+          <button
+            className='btn btn-outline-warning'
+            onClick={handlerLike}>
+            <i className={`bi ${selected ? 'bi-heart-fill' : 'bi-heart'} favorite-icon`}></i>
+          </button>
         </div>
       </div>
     </div>

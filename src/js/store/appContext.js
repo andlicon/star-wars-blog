@@ -18,6 +18,10 @@ const injectContext = PassedComponent => {
     );
 
     useEffect(() => {
+      // load favorites
+
+      //Check if there exist some favorite article and asign it status
+
       //Makes the first fetch and set it to the store, with the next pag
       state.actions.getAllItems()
     }, []);

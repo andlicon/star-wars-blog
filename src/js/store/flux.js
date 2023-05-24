@@ -19,8 +19,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             const response = await fetch(url);
             const data = await response.json();
 
+            const dataWithFavorite = data.results.map((element) => {
+              return { ...element, isFavorite: false }
+            });
+
             setStore({
-              [endp]: data.results
+              [endp]: dataWithFavorite
             });
           }
           catch (error) {
