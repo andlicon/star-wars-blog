@@ -32,6 +32,27 @@ const getState = ({ getStore, getActions, setStore }) => {
         const favorites = getStore().favorites;
 
         setStore({ favorites: [...favorites, { name, group, id }] })
+      },
+      getProperties: async (url, toShow) => {
+        let propertiesToShow = {};
+
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          const fetchProperties = data.result.properties;
+
+          toShow.forEach((element) => {
+            propertiesToShow = {
+              ...propertiesToShow,
+              [element]: fetchProperties[element]
+            }
+          });
+        }
+        catch (error) {
+          console.log(error);
+        }
+
+        return propertiesToShow;
       }
     }
   };

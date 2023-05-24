@@ -8,13 +8,15 @@ import { Context } from '../store/appContext';
 const Card = ({ name, url, toShow, group, id }) => {
   // hooks
   const { actions } = useContext(Context);
+  const [properties, setProperties] = useState({});
 
   const handlerLike = () => {
     actions.addFavorite(name, group, id);
   }
 
   useEffect(() => {
-    console.log(toShow);
+    actions.getProperties(url, toShow)
+      .then(response => setProperties(response))
   }, []);
 
   return (
@@ -26,9 +28,17 @@ const Card = ({ name, url, toShow, group, id }) => {
             name
           }
         </h5>
-        <p className='card-text'>
-
-        </p>
+        <div className='card-text'>
+          {
+            Object.keys(properties).map((key, index) => {
+              return (
+                <p key={index}>
+                  <span>{key}</span>: {properties[key]}
+                </p>
+              )
+            })
+          }
+        </div>
         <div className='card__interact d-flex justify-content-between'>
           <Link to={`/${group}/${id}`} className='btn btn-primary'>Learn more!</Link>
           {/* falta el boton de like */}
