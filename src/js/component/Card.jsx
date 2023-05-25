@@ -4,10 +4,26 @@ import '../../styles/card.css';
 import { Context } from '../store/appContext';
 
 const Card = ({ item, keyToShow }) => {
-  // hooks
-  const { actions } = useContext(Context);
-  const { addFavorite, getProperties, deleteFavorite } = actions;
+  // Context
+  const { actions, store } = useContext(Context);
+  const { favorites } = store;
+  const { addFavorite, deleteFavorite, isFavorite } = actions;
   const { properties } = item;
+  // state
+  const [isFavoriteCard, setIsFavoriteCard] = useState(isFavorite(item));
+
+  const handlerLike = () => {
+    if (isFavoriteCard) {
+      deleteFavorite(item);
+    }
+    else {
+      addFavorite(item);
+    }
+  }
+
+  useEffect(() => {
+    setIsFavoriteCard(isFavorite(item));
+  }, [isFavorite(item)]);
 
   return (
     <div className='card'>
@@ -44,8 +60,8 @@ const Card = ({ item, keyToShow }) => {
           </Link>
           <button
             className='btn btn-outline-warning'
-            onClick={() => addFavorite(item)}>
-            <i className={`bi bi-heart`}></i>
+            onClick={handlerLike}>
+            <i className={`bi ${isFavoriteCard ? 'bi-heart-fill' : 'bi-heart'}`}></i>
           </button>
         </div>
       </div>
