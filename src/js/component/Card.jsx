@@ -8,6 +8,7 @@ const Card = ({ item, keyToShow }) => {
   const { actions } = useContext(Context);
   const { addFavorite, deleteFavorite, isFavorite } = actions;
   const { properties } = item;
+
   // state
   const [isFavoriteCard, setIsFavoriteCard] = useState(isFavorite(item));
 
@@ -53,7 +54,7 @@ const Card = ({ item, keyToShow }) => {
         </div>
         <div className='card__interact d-flex justify-content-between'>
           <Link
-            // to={redirect}
+            to={properties.url.split(/https:.+\/api\//)[1]}
             className='btn btn-outline-primary'>
             Learn more!
           </Link>

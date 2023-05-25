@@ -6,7 +6,7 @@ import ScrollToTop from './component/scrollToTop';
 import Header from './component/Header.jsx';
 // views
 import Home from './views/Home.jsx';
-
+import Details from './views/Details.jsx';
 
 const Layout = () => {
   const basename = process.env.BASENAME || '';
@@ -18,8 +18,7 @@ const Layout = () => {
           <Header />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/character' element={<Home />} />
-            <Route path='/planet' element={<Home />} />
+            <Route path='/:nature/:id' element={<Details />} />
             <Route path='*' element={<h1>Not found!</h1>} />
           </Routes>
         </ScrollToTop>
