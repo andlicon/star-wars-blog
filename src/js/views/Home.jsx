@@ -8,14 +8,14 @@ const Home = () => {
   const { store: { people, planets, vehicles } } = useContext(Context);
 
   return (
-    <div className='container'>
+    <>
       {/* characters */}
       <CardGroup title='Chracters' keyToShow={['gender', 'hair_color', 'eye_color']} items={people} />
       {/* planets */}
       <CardGroup title='Planets' keyToShow={['population', 'terrain']} items={planets} />
       {/* vehicles */}
       <CardGroup title='Vehicles' keyToShow={['crew', 'passengers', 'cargo_capacity', 'cost_in_credits']} items={vehicles} />
-    </div>
+    </>
   );
 };
 export default Home;
