@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       people: localStorage.people == undefined ? [] : JSON.parse(localStorage.people),
       planets: localStorage.planets == undefined ? [] : JSON.parse(localStorage.planets),
       vehicles: localStorage.vehicles == undefined ? [] : JSON.parse(localStorage.vehicles),
-      favorites: []
+      favorites: localStorage.favorites == undefined ? [] : JSON.parse(localStorage.favorites),
     },
     actions: {
       getAllItems: () => {
@@ -39,54 +39,28 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
       },
-      addFavorite: (name, url) => {
-        const changeFavoriteStatus = getActions().changeFavoriteStatus;
-        const favorites = getStore().favorites;
+      addFavorite: (item) => {
+        const store = getStore();
+        const { favorites } = store;
 
-        changeFavoriteStatus(url, true);
-        setStore({ favorites: [...favorites, { name, url }] })
+        if (!favorites.some((element) => element == item)) {
+          setStore({ favorites: [...favorites, item] })
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(getStore().favorites));
       },
-      deleteFavorite: (url) => {
-        const changeFavoriteStatus = getActions().changeFavoriteStatus;
-        const favorites = getStore().favorites;
+      deleteFavorite: (item) => {
+        const store = getStore();
+        const { favorites } = store;
 
-        const newFavorites = favorites.filter((element) => {
-          return (url != element.url);
-        });
-        //updatear el state de los resultados (isFavorte)
-        changeFavoriteStatus(url, false);
-        setStore({ favorites: newFavorites });
-      },
-      getProperties: async (url, toShow) => {
-        let propertiesToShow = {};
-
-        try {
-          const response = await fetch(url);
-          const data = await response.json();
-          const fetchProperties = data.result.properties;
-
-          toShow.forEach((element) => {
-            propertiesToShow = {
-              ...propertiesToShow,
-              [element]: fetchProperties[element]
-            }
+        if (favorites.some(element => element == item)) {
+          const newFavorites = favorites.filter((element) => {
+            return (element != item);
           });
+
+          setStore({ favorites: newFavorites });
+          localStorage.setItem('favorites', JSON.stringify(getStore().favorites));
         }
-        catch (error) {
-          console.log(error);
-        }
-
-        return propertiesToShow;
-      },
-      changeFavoriteStatus: (url, newStatus) => {
-        const group = url.split('/')[1];
-        const itemsList = getStore()[group];
-        const item = itemsList.find((element) => {
-          return element.url.endsWith(url);
-        });
-
-        item.isFavorite = newStatus;
-
       },
     }
   };

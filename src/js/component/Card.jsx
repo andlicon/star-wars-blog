@@ -9,11 +9,9 @@ const Card = ({ item, keyToShow }) => {
   const { addFavorite, getProperties, deleteFavorite } = actions;
   const { properties } = item;
 
-  console.log(keyToShow);
-
   return (
     <div className='card'>
-      <img className='card-img-top' src='' alt={`${name} image`} />
+      <img className='card-img-top' src='' alt={`${properties.name} image`} />
       <div className='card-body'>
         <h5 className='card-title'>
           {
@@ -24,7 +22,7 @@ const Card = ({ item, keyToShow }) => {
           {
             (keyToShow).map((key, index) => {
               return (
-                <p className='card-text' key={index}>
+                <p className='card-text' key={`${item._id}-${index}`}>
                   <span className='card-text--bold'>
                     {
                       key.replaceAll('_', ' ')
@@ -45,7 +43,8 @@ const Card = ({ item, keyToShow }) => {
             Learn more!
           </Link>
           <button
-            className='btn btn-outline-warning'>
+            className='btn btn-outline-warning'
+            onClick={() => addFavorite(item)}>
             <i className={`bi bi-heart`}></i>
           </button>
         </div>
