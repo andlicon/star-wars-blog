@@ -26,18 +26,19 @@ const Favorites = () => {
         {
           favorites.length == 0
             ? <li className='dropdown-item'>(Empty)</li>
-            : favorites.map((item, index) => {
+            : favorites.map((item) => {
 
               const { properties } = item;
               return (
-                <li className='d-flex' key={index}>
+                <li className='d-flex' key={`favorite${item._id}`}>
                   <Link
-                    className='dropdown-item'>
+                    className='dropdown-item'
+                    to={properties.url.split(/https:.+\/api\//)[1]} >
                     {properties['name']}
                   </Link>
                   <button
                     className='delete-button'
-                    onClick={() => deleteFavorite(item)}>
+                    onClick={() => deleteFavorite(item)} >
                     <i className='bi bi-trash-fill'></i>
                   </button>
                 </li>
