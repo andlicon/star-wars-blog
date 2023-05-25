@@ -3,7 +3,7 @@ import '../../styles/cardGroup.css'
 // components
 import Card from './Card.jsx';
 
-const CardGroup = ({ items, title, toShow }) => {
+const CardGroup = ({ items, title, keyToShow }) => {
   return (
     <div className='cardGroup my-4'>
       <h2 className='cardGroup__title text-danger'>
@@ -15,12 +15,9 @@ const CardGroup = ({ items, title, toShow }) => {
         {
           items.map((item) => {
             return <Card
-              key={item.uid}
-              name={item.name}
-              url={item.url}
-              toShow={toShow}
-              redirect={''}
-              isFavorite={item.isFavorite} />
+              key={item._id}
+              keyToShow={keyToShow}
+              item={item} />
           })
         }
       </div>

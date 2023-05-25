@@ -3,36 +3,13 @@ import { Link } from 'react-router-dom'
 import '../../styles/card.css';
 import { Context } from '../store/appContext';
 
-const Card = ({ name, url, redirect, toShow, isFavorite }) => {
+const Card = ({ item, keyToShow }) => {
   // hooks
-  const { actions: {
-    addFavorite,
-    getProperties,
-    deleteFavorite }
-  } = useContext(Context);
-  const { store } = useContext(Context);
-  const [properties, setProperties] = useState({});
-  //Matches with its own representation inside the results array
-  // const [isfavorite, setIsFavorite] = useState(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
+  const { actions } = useContext(Context);
+  const { addFavorite, getProperties, deleteFavorite } = actions;
+  const { properties } = item;
 
-  // const handlerLike = () => {
-  //   if (isfavorite) {
-  //     deleteFavorite(redirect);
-  //   }
-  //   else {
-  //     addFavorite(name, redirect);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getProperties(url, toShow)
-  //     .then(response => setProperties(response))
-  // }, []);
-
-  //When its own representation inside the results array change, it change too
-  // useEffect(() => {
-  //   setIsFavorite(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
-  // }, [store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite]);
+  console.log(keyToShow);
 
   return (
     <div className='card'>
@@ -40,12 +17,12 @@ const Card = ({ name, url, redirect, toShow, isFavorite }) => {
       <div className='card-body'>
         <h5 className='card-title'>
           {
-            name
+            properties.name
           }
         </h5>
         <div className='card-content mb-3'>
           {
-            Object.keys(properties).map((key, index) => {
+            (keyToShow).map((key, index) => {
               return (
                 <p className='card-text' key={index}>
                   <span className='card-text--bold'>
@@ -63,7 +40,7 @@ const Card = ({ name, url, redirect, toShow, isFavorite }) => {
         </div>
         <div className='card__interact d-flex justify-content-between'>
           <Link
-            to={redirect}
+            // to={redirect}
             className='btn btn-outline-primary'>
             Learn more!
           </Link>
