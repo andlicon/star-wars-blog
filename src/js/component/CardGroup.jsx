@@ -19,7 +19,7 @@ const CardGroup = ({ items, title, toShow }) => {
               name={item.name}
               url={item.url}
               toShow={toShow}
-              redirect={item.url.replace(/https.+\/api/, '')}
+              redirect={''}
               isFavorite={item.isFavorite} />
           })
         }

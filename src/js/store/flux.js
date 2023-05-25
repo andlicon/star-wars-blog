@@ -2,33 +2,40 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       urlBase: 'https://www.swapi.tech/api',
-      people: [],
-      planets: [],
-      vehicles: [],
+      endpoints: ['people', 'planets', 'vehicles'],
+      people: localStorage.people == undefined ? [] : JSON.parse(localStorage.people),
+      planets: localStorage.planets == undefined ? [] : JSON.parse(localStorage.planets),
+      vehicles: localStorage.vehicles == undefined ? [] : JSON.parse(localStorage.vehicles),
       favorites: []
     },
     actions: {
       getAllItems: () => {
-        let store = getStore();
-        const endpoints = ['people', 'planets', 'vehicles'];
+        const store = getStore();
+        const { endpoints } = store;
 
         endpoints.forEach(async (endp) => {
-          const url = `${store.urlBase}/${endp}/`;
+          if (store[endp].length == 0) {
+            const url = `${store.urlBase}/${endp}/`;
 
-          try {
-            const response = await fetch(url);
-            const data = await response.json();
+            try {
+              const response = await fetch(url);
+              const data = await response.json();
 
-            const dataWithFavorite = data.results.map((element) => {
-              return { ...element, isFavorite: false }
-            });
+              data.results.forEach(async (element) => {
+                const url = element.url;
 
-            setStore({
-              [endp]: dataWithFavorite
-            });
-          }
-          catch (error) {
-            console.log(error);
+                const response = await fetch(url);
+                const data = await response.json();
+
+                setStore({
+                  [endp]: [...getStore()[endp], data.result]
+                });
+                window.localStorage.setItem(endp, JSON.stringify(store[endp]));
+              });
+            }
+            catch (error) {
+              console.log(error);
+            }
           }
         });
       },

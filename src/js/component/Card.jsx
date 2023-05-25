@@ -13,26 +13,26 @@ const Card = ({ name, url, redirect, toShow, isFavorite }) => {
   const { store } = useContext(Context);
   const [properties, setProperties] = useState({});
   //Matches with its own representation inside the results array
-  const [isfavorite, setIsFavorite] = useState(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
+  // const [isfavorite, setIsFavorite] = useState(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
 
-  const handlerLike = () => {
-    if (isfavorite) {
-      deleteFavorite(redirect);
-    }
-    else {
-      addFavorite(name, redirect);
-    }
-  }
+  // const handlerLike = () => {
+  //   if (isfavorite) {
+  //     deleteFavorite(redirect);
+  //   }
+  //   else {
+  //     addFavorite(name, redirect);
+  //   }
+  // }
 
-  useEffect(() => {
-    getProperties(url, toShow)
-      .then(response => setProperties(response))
-  }, []);
+  // useEffect(() => {
+  //   getProperties(url, toShow)
+  //     .then(response => setProperties(response))
+  // }, []);
 
   //When its own representation inside the results array change, it change too
-  useEffect(() => {
-    setIsFavorite(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
-  }, [store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite]);
+  // useEffect(() => {
+  //   setIsFavorite(store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite);
+  // }, [store[redirect.split('/')[1]].find((e) => e.url == url).isFavorite]);
 
   return (
     <div className='card'>
@@ -68,9 +68,8 @@ const Card = ({ name, url, redirect, toShow, isFavorite }) => {
             Learn more!
           </Link>
           <button
-            className='btn btn-outline-warning'
-            onClick={handlerLike}>
-            <i className={`bi ${isFavorite ? 'bi-heart-fill' : 'bi-heart'} favorite-icon`}></i>
+            className='btn btn-outline-warning'>
+            <i className={`bi bi-heart`}></i>
           </button>
         </div>
       </div>
