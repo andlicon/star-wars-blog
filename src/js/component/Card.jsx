@@ -5,26 +5,16 @@ import { Context } from '../store/appContext';
 
 const Card = ({ item, keyToShow, type }) => {
   // Context
-  const { actions } = useContext(Context);
-  const { addFavorite, deleteFavorite, isFavorite } = actions;
+  const { actions, store } = useContext(Context);
+  const { addFavorite } = actions;
   const { properties } = item;
 
-
   // state
-  const [isFavoriteCard, setIsFavoriteCard] = useState(isFavorite(item));
+  // const [isFavoriteCard, setIsFavoriteCard] = useState(isFavorite(item));
 
-  const handlerLike = () => {
-    if (isFavoriteCard) {
-      deleteFavorite(item);
-    }
-    else {
-      addFavorite(item);
-    }
-  }
-
-  useEffect(() => {
-    setIsFavoriteCard(isFavorite(item));
-  }, [isFavorite(item)]);
+  // const handlerLike = () => {
+  //   addFavorite(item);
+  // }
 
   return (
     <div className='card'>
@@ -57,14 +47,14 @@ const Card = ({ item, keyToShow, type }) => {
         </div>
         <div className='card__interact d-flex justify-content-between'>
           <Link
-            to={properties.url.split(/https:.+\/api\//)[1]}
+            to={`${type.toLowerCase()}/${item.uid}`}
             className='btn btn-outline-primary'>
             Learn more!
           </Link>
           <button
             className='btn btn-outline-warning'
-            onClick={handlerLike} >
-            <i className={`bi ${isFavoriteCard ? 'bi-heart-fill' : 'bi-heart'}`}></i>
+            onClick={() => addFavorite(item)} >
+            <i className={`bi ${store.favorites.find((fav) => fav._id == item._id) ? 'bi-heart-fill' : 'bi-heart'}`}></i>
           </button>
         </div>
       </div>
