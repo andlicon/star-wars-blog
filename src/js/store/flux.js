@@ -63,7 +63,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         const store = getStore();
         const { favorites } = store;
 
-        return favorites.find((fav) => fav._id == item._id);
+        return favorites.some((fav) => fav._id == item._id);
+      },
+      getItem: (nature, id) => {
+        const store = getStore();
+
+        const obj = store[nature].find((element) => element.uid == id);
+
+        return obj;
       }
     }
   };

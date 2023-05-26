@@ -7,11 +7,12 @@ const DetailsVehicles = () => {
   // hooks
   const [nature,] = useState('vehicles');
   const { id } = useParams();
-  const { store } = useContext(Context);
+  const { actions } = useContext(Context);
+  const { getItem } = actions;
   const [item, setItem] = useState({});
 
   useEffect(() => {
-    const item = store[nature].find((element) => element.uid == id);
+    const item = getItem(nature, id);
 
     setItem(item);
   }, []);
