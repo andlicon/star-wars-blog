@@ -5,7 +5,7 @@ import { Context } from '../store/appContext';
 
 const Card = ({ item, keyToShow, type }) => {
   // Context
-  const { actions, store } = useContext(Context);
+  const { actions } = useContext(Context);
   const { updateFavorite, isFavorite } = actions;
   const { properties } = item;
 

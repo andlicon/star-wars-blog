@@ -6,7 +6,9 @@ import ScrollToTop from './component/scrollToTop';
 import Header from './component/Header.jsx';
 // views
 import Home from './views/Home.jsx';
-import Details from './views/Details.jsx';
+import DetailsPeople from './views/DetailsPeople.jsx';
+import DetailsPlanets from './views/DetailsPlanets.jsx';
+import DetailsVehicles from './views/DetailsVehicles.jsx';
 
 const Layout = () => {
   const basename = process.env.BASENAME || '';
@@ -19,7 +21,9 @@ const Layout = () => {
           <div className='container'>
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/:nature/:id' element={<Details />} />
+              <Route path='/characters/:id' element={<DetailsPeople />} />
+              <Route path='/planets/:id' element={<DetailsPlanets />} />
+              <Route path='/vehicles/:id' element={<DetailsVehicles />} />
               <Route path='*' element={<h1>Not found!</h1>} />
             </Routes>
           </div>
