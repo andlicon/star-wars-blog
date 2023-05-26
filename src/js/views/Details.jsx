@@ -47,6 +47,7 @@ const Details = () => {
           </p>
         </div>
       </div>
+      <hr className='text-danger hr'></hr>
       <div className='details-content d-flex justify-content-between text-danger'>
         {
           showDetailInfo()
