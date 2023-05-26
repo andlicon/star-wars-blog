@@ -6,7 +6,7 @@ import { Context } from '../store/appContext';
 const Card = ({ item, keyToShow, type }) => {
   // Context
   const { actions, store } = useContext(Context);
-  const { updateFavorite } = actions;
+  const { updateFavorite, isFavorite } = actions;
   const { properties } = item;
 
   return (
@@ -47,7 +47,7 @@ const Card = ({ item, keyToShow, type }) => {
           <button
             className='btn btn-outline-warning'
             onClick={() => updateFavorite(item)} >
-            <i className={`bi ${store.favorites.find((fav) => fav._id == item._id) ? 'bi-heart-fill' : 'bi-heart'}`}></i>
+            <i className={`bi ${isFavorite(item) ? 'bi-heart-fill' : 'bi-heart'}`}></i>
           </button>
         </div>
       </div>

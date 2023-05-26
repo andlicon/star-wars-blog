@@ -42,8 +42,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       updateFavorite: (item) => {
         const store = getStore();
         const { favorites } = store;
+        const actions = getActions();
+        const { isFavorite } = actions;
 
-        if (!favorites.find((fav) => fav._id == item._id)) {
+        if (!isFavorite(item)) {
           //no es favorito, lo anade
           setStore({ favorites: [...favorites, item] });
           localStorage.setItem('favorites', JSON.stringify(getStore().favorites));
@@ -57,21 +59,12 @@ const getState = ({ getStore, getActions, setStore }) => {
           localStorage.setItem('favorites', JSON.stringify(getStore().favorites));
         }
       },
-      deleteFavorite: (item) => {
+      isFavorite: (item) => {
         const store = getStore();
         const { favorites } = store;
-        const actions = getActions();
-        const { isFavorite } = actions;
 
-        if (isFavorite(item)) {
-          const newFavorites = favorites.filter((element) => {
-            return (element._id != item._id);
-          });
-
-          setStore({ favorites: newFavorites });
-          localStorage.setItem('favorites', JSON.stringify(getStore().favorites));
-        }
-      },
+        return favorites.find((fav) => fav._id == item._id);
+      }
     }
   };
 };
