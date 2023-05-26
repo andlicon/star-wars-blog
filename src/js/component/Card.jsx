@@ -40,7 +40,7 @@ const Card = ({ item, keyToShow, type }) => {
         </div>
         <div className='card__interact d-flex justify-content-between'>
           <Link
-            to={`${type.toLowerCase()}/${item.uid}`}
+            to={properties.url.split(/https:.+\/api\//)[1]}
             className='btn btn-outline-primary'>
             Learn more!
           </Link>

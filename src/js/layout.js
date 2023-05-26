@@ -21,7 +21,7 @@ const Layout = () => {
           <div className='container'>
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/characters/:id' element={<DetailsPeople />} />
+              <Route path='/people/:id' element={<DetailsPeople />} />
               <Route path='/planets/:id' element={<DetailsPlanets />} />
               <Route path='/vehicles/:id' element={<DetailsVehicles />} />
               <Route path='*' element={<h1>Not found!</h1>} />
