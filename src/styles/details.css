@@ -1,0 +1,19 @@
+.details-container {
+  display: flex;
+}
+
+p {
+  margin: 0;
+}
+
+.details-resume {
+  width: 100%;
+}
+
+.details-container * {
+  width: 50%;
+}
+
+.details-image {
+  max-height: 400px;
+}

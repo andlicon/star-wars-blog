@@ -25,7 +25,7 @@ const Favorites = () => {
       <ul className='dropdown-menu'>
         {
           favorites.length == 0
-            ? <li className='dropdown-item'>(Empty)</li>
+            ? <li className='dropdown-item text-center'>(Empty)</li>
             : favorites.map((item) => {
 
               const { properties } = item;
