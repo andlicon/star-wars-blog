@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import { Context } from '../store/appContext';
 
 const Favorites = () => {
-  const {
-    store: { favorites },
-    actions: { deleteFavorite }
-  } = useContext(Context);
+  const { store, actions } = useContext(Context);
+  const { favorites } = store;
+  const { updateFavorite } = actions;
 
   return (
     <div className='dropdown'>
@@ -38,7 +37,7 @@ const Favorites = () => {
                   </Link>
                   <button
                     className='delete-button'
-                    onClick={() => deleteFavorite(item)} >
+                    onClick={() => updateFavorite(item)} >
                     <i className='bi bi-trash-fill'></i>
                   </button>
                 </li>

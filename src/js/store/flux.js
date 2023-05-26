@@ -39,18 +39,22 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         });
       },
-      addFavorite: (item) => {
+      updateFavorite: (item) => {
         const store = getStore();
         const { favorites } = store;
-        const actions = getActions();
-        const { isFavorite, deleteFavorite } = actions;
 
-        if (!isFavorite(item)) {
+        if (!favorites.find((fav) => fav._id == item._id)) {
+          //no es favorito, lo anade
           setStore({ favorites: [...favorites, item] });
           localStorage.setItem('favorites', JSON.stringify(getStore().favorites));
         }
         else {
-          deleteFavorite(item);
+          //es favorito, lo borra
+          const newFavorites = favorites.filter((element) => {
+            return (element._id != item._id);
+          });
+          setStore({ favorites: newFavorites });
+          localStorage.setItem('favorites', JSON.stringify(getStore().favorites));
         }
       },
       deleteFavorite: (item) => {
@@ -67,12 +71,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ favorites: newFavorites });
           localStorage.setItem('favorites', JSON.stringify(getStore().favorites));
         }
-      },
-      isFavorite: (item) => {
-        const store = getStore();
-        const { favorites } = store;
-
-        return favorites.some(element => element._id == item._id);
       },
     }
   };
