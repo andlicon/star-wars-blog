@@ -4,6 +4,8 @@
 
 .card img {
   height: 200px;
+  object-fit: scale-down;
+  object-position: 50% 10%;
 }
 
 .card-title {

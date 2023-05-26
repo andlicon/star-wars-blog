@@ -15,5 +15,6 @@ p {
 }
 
 .details-image {
-  max-height: 400px;
+  width: 100%;
+  height: 600px;
 }

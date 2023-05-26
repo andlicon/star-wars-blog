@@ -21,7 +21,7 @@ const Details = () => {
 
     const jsx = info.map((prop) => {
       return (
-        <div className='details-info'>
+        <div key={`${prop}-${item._id}`} className='details-info'>
           <h3>{prop.replaceAll('_', ' ')}</h3>
           <p>{properties[prop]}</p>
         </div>
@@ -34,15 +34,20 @@ const Details = () => {
   return (
     <div className='details'>
       <div className='details-resume d-flex'>
-        <img src='' alt='' className='details-image w-50 p-4' />
+        <img
+          src={`https://starwars-visualguide.com/assets/img/${nature == 'people' ? 'characters' : nature}/${id}.jpg`}
+          alt=''
+          className='details-image w-50 p-4' />
         <div className='details-resume-content w-50 p-4'>
           <h2 className='details-title'>{properties.name}</h2>
           <p className='details-resume-text'>
-            {item.description}
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, deserunt?
+            Expedita consequatur optio, animi possimus eveniet laborum et at voluptate
+            reprehenderit officiis distinctio, non atque velit ea. Fugit, ipsa esse.
           </p>
         </div>
       </div>
-      <div className="details-content">
+      <div className='details-content d-flex justify-content-between text-danger'>
         {
           showDetailInfo()
         }

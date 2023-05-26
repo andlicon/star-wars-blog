@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import '../../styles/card.css';
 import { Context } from '../store/appContext';
 
-const Card = ({ item, keyToShow }) => {
+const Card = ({ item, keyToShow, type }) => {
   // Context
   const { actions } = useContext(Context);
   const { addFavorite, deleteFavorite, isFavorite } = actions;
   const { properties } = item;
+
 
   // state
   const [isFavoriteCard, setIsFavoriteCard] = useState(isFavorite(item));
@@ -27,7 +28,9 @@ const Card = ({ item, keyToShow }) => {
 
   return (
     <div className='card'>
-      <img className='card-img-top' src='' alt={`${properties.name} image`} />
+      <img className='card-img-top'
+        src={`https://starwars-visualguide.com/assets/img/${type.toLowerCase()}/${item.uid}.jpg`}
+        alt={`${properties.name} image`} />
       <div className='card-body'>
         <h5 className='card-title'>
           {

@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       {/* characters */}
-      <CardGroup title='Chracters' keyToShow={['gender', 'hair_color', 'eye_color']} items={people} />
+      <CardGroup title='Characters' keyToShow={['gender', 'hair_color', 'eye_color']} items={people} />
       {/* planets */}
       <CardGroup title='Planets' keyToShow={['population', 'terrain']} items={planets} />
       {/* vehicles */}

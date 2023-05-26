@@ -17,6 +17,7 @@ const CardGroup = ({ items, title, keyToShow }) => {
             return <Card
               key={item._id}
               keyToShow={keyToShow}
+              type={title}
               item={item} />
           })
         }
