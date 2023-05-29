@@ -35,7 +35,46 @@ const DetailsPeople = () => {
       </div>
       <hr className='text-danger hr'></hr>
       <div className='details-content d-flex justify-content-between text-danger'>
-
+        {
+          <>
+            <div className="details-group">
+              <p className='details-text'>
+                <span className='details-propertie'>Name</span>
+                {item?.properties?.name}
+              </p>
+            </div>
+            <div className="details-group">
+              <p className='details-text'>
+                <span className='details-propertie'>Birth Year</span>
+                {item?.properties?.birth_year}
+              </p>
+            </div>
+            <div className="details-group">
+              <p className='details-text'>
+                <span className='details-propertie'>Gender</span>
+                {item?.properties?.gender}
+              </p>
+            </div>
+            <div className="details-group">
+              <p className='details-text'>
+                <span className='details-propertie'>Height</span>
+                {item?.properties?.height}
+              </p>
+            </div>
+            <div className="details-group">
+              <p className='details-text'>
+                <span className='details-propertie'>Skin Color</span>
+                {item?.properties?.skin_color}
+              </p>
+            </div>
+            <div className="details-group">
+              <p className='details-text'>
+                <span className='details-propertie'>Eye Color</span>
+                {item?.properties?.eye_color}
+              </p>
+            </div>
+          </>
+        }
       </div>
     </div>
   );

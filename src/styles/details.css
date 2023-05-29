@@ -18,3 +18,18 @@ p {
   width: 100%;
   height: 600px;
 }
+
+.details-group {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.details-text {
+  display: block;
+  hyphens: auto;
+}
+
+.details-propertie {
+  display: block;
+  font-weight: bold;
+}

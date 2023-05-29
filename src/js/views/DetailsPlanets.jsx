@@ -35,7 +35,44 @@ const DetailsPlanets = () => {
       </div>
       <hr className='text-danger hr'></hr>
       <div className='details-content d-flex justify-content-between text-danger'>
-
+        <>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Name</span>
+              {item?.properties?.name}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Climate</span>
+              {item?.properties?.climate}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Population</span>
+              {item?.properties?.population}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Orbital Period</span>
+              {item?.properties?.orbital_period}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Rotation Period</span>
+              {item?.properties?.rotation_period}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Diameter</span>
+              {item?.properties?.diameter}
+            </p>
+          </div>
+        </>
       </div>
     </div>
   );

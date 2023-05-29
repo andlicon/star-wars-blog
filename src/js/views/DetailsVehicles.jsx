@@ -17,6 +17,8 @@ const DetailsVehicles = () => {
     setItem(item);
   }, []);
 
+  console.log(item);
+
   return (
     <div className='details'>
       <div className='details-resume d-flex'>
@@ -35,7 +37,44 @@ const DetailsVehicles = () => {
       </div>
       <hr className='text-danger hr'></hr>
       <div className='details-content d-flex justify-content-between text-danger'>
-
+        <>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Name</span>
+              {item?.properties?.name}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Vehicle Class</span>
+              {item?.properties?.vehicle_class}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Length</span>
+              {item?.properties?.length}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Crew</span>
+              {item?.properties?.crew}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Passengers</span>
+              {item?.properties?.passengers}
+            </p>
+          </div>
+          <div className="details-group">
+            <p className='details-text'>
+              <span className='details-propertie'>Cost</span>
+              {item?.properties?.cost_in_credits}
+            </p>
+          </div>
+        </>
       </div>
     </div>
   );
