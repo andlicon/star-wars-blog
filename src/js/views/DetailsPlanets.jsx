@@ -1,21 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Context } from '../store/appContext';
+import useDetails from '../hooks/useDetails.jsx';
 import '../../styles/details.css';
 
 const DetailsPlanets = () => {
   // hooks
-  const [nature,] = useState('planets');
   const { id } = useParams();
-  const { actions } = useContext(Context);
-  const { getItem } = actions;
-  const [item, setItem] = useState({});
-
-  useEffect(() => {
-    const item = getItem(nature, id);
-
-    setItem(item);
-  }, []);
+  const {
+    item,
+    nature } = useDetails(id, 'planets');
 
   return (
     <div className='details'>
@@ -36,37 +29,37 @@ const DetailsPlanets = () => {
       <hr className='text-danger hr'></hr>
       <div className='details-content d-flex justify-content-between text-danger'>
         <>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Name</span>
               {item?.properties?.name}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Climate</span>
               {item?.properties?.climate}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Population</span>
               {item?.properties?.population}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Orbital Period</span>
               {item?.properties?.orbital_period}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Rotation Period</span>
               {item?.properties?.rotation_period}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Diameter</span>
               {item?.properties?.diameter}

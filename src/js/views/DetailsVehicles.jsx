@@ -1,23 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Context } from '../store/appContext';
+import useDetails from '../hooks/useDetails.jsx';
 import '../../styles/details.css';
 
 const DetailsVehicles = () => {
-  // hooks
-  const [nature,] = useState('vehicles');
   const { id } = useParams();
-  const { actions } = useContext(Context);
-  const { getItem } = actions;
-  const [item, setItem] = useState({});
-
-  useEffect(() => {
-    const item = getItem(nature, id);
-
-    setItem(item);
-  }, []);
-
-  console.log(item);
+  const {
+    item,
+    nature } = useDetails(id, 'vehicles');
 
   return (
     <div className='details'>
@@ -38,37 +28,37 @@ const DetailsVehicles = () => {
       <hr className='text-danger hr'></hr>
       <div className='details-content d-flex justify-content-between text-danger'>
         <>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Name</span>
               {item?.properties?.name}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Vehicle Class</span>
               {item?.properties?.vehicle_class}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Length</span>
               {item?.properties?.length}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Crew</span>
               {item?.properties?.crew}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Passengers</span>
               {item?.properties?.passengers}
             </p>
           </div>
-          <div className="details-group">
+          <div className='details-group'>
             <p className='details-text'>
               <span className='details-propertie'>Cost</span>
               {item?.properties?.cost_in_credits}
