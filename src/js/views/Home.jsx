@@ -5,16 +5,31 @@ import '../../styles/home.css';
 import CardGroup from '../component/CardGroup.jsx';
 
 const Home = () => {
-  const { store: { people, planets, vehicles } } = useContext(Context);
+  const { store: { people, peopleNext, planets, planetsNext, vehicles, vehiclesNext } } = useContext(Context);
 
   return (
     <>
       {/* characters */}
-      <CardGroup title='Characters' id='character-slide' keyToShow={['gender', 'hair_color', 'eye_color']} items={people} />
+      <CardGroup
+        title='Characters'
+        id='character-slide'
+        keyToShow={['gender', 'hair_color', 'eye_color']}
+        items={people}
+        toQuery={peopleNext} />
       {/* planets */}
-      <CardGroup title='Planets' id='people-slide' keyToShow={['population', 'terrain']} items={planets} />
+      <CardGroup
+        title='Planets'
+        id='people-slide'
+        keyToShow={['population', 'terrain']}
+        items={planets}
+        toQuery={planetsNext} />
       {/* vehicles */}
-      <CardGroup title='Vehicles' id='vehicle-slide' keyToShow={['crew', 'passengers', 'cargo_capacity', 'cost_in_credits']} items={vehicles} />
+      <CardGroup
+        title='Vehicles'
+        id='vehicle-slide'
+        keyToShow={['crew', 'passengers', 'cargo_capacity', 'cost_in_credits']}
+        items={vehicles}
+        toQuery={vehiclesNext} />
     </>
   );
 };

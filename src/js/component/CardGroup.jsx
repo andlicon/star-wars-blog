@@ -4,8 +4,9 @@ import useScroll from '../hooks/useScroll.jsx';
 // components
 import Card from './Card.jsx';
 
-const CardGroup = ({ items, title, keyToShow, id }) => {
+const CardGroup = ({ items, title, keyToShow, id, toQuery }) => {
   const { } = useScroll(id);
+  console.log(toQuery)
 
   return (
     <div className='cardGroup my-4' id={id}>

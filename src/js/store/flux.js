@@ -3,13 +3,13 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       urlBase: 'https://www.swapi.tech/api',
       endpoints: ['people', 'planets', 'vehicles'],
-      people: localStorage.people == undefined ? [] : JSON.parse(localStorage.people),
-      planets: localStorage.planets == undefined ? [] : JSON.parse(localStorage.planets),
-      vehicles: localStorage.vehicles == undefined ? [] : JSON.parse(localStorage.vehicles),
-      favorites: localStorage.favorites == undefined ? [] : JSON.parse(localStorage.favorites),
-      peopleNext: localStorage.favorites == undefined ? null : JSON.parse(localStorage.peopleNext),
-      planetsNext: localStorage.favorites == undefined ? null : JSON.parse(localStorage.planetsNext),
-      vehiclesNext: localStorage.favorites == undefined ? null : JSON.parse(localStorage.favorites)
+      people: JSON.parse(localStorage.getItem('people')) || [],
+      planets: JSON.parse(localStorage.getItem('planets')) || [],
+      vehicles: JSON.parse(localStorage.getItem('vehicles')) || [],
+      favorites: JSON.parse(localStorage.getItem('favorites')) || [],
+      peopleNext: JSON.parse(localStorage.getItem('peopleNext')) || null,
+      planetsNext: JSON.parse(localStorage.getItem('planetsNext')) || null,
+      vehiclesNext: JSON.parse(localStorage.getItem('vehiclesNext')) || null
     },
     actions: {
       getAllItems: () => {
