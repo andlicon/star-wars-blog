@@ -1,17 +1,20 @@
 import React from 'react';
 import '../../styles/cardGroup.css'
+import useScroll from '../hooks/useScroll.jsx';
 // components
 import Card from './Card.jsx';
 
-const CardGroup = ({ items, title, keyToShow }) => {
+const CardGroup = ({ items, title, keyToShow, id }) => {
+  const { } = useScroll(id);
+
   return (
-    <div className='cardGroup my-4'>
+    <div className='cardGroup my-4' id={id}>
       <h2 className='cardGroup__title text-danger'>
         {
           title
         }
       </h2>
-      <div className='cardGroup__content'>
+      <div id={`${id}-content`} className='cardGroup__content'>
         {
           items.map((item) => {
             return <Card

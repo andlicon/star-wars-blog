@@ -10,11 +10,11 @@ const Home = () => {
   return (
     <>
       {/* characters */}
-      <CardGroup title='Characters' keyToShow={['gender', 'hair_color', 'eye_color']} items={people} />
+      <CardGroup title='Characters' id='character-slide' keyToShow={['gender', 'hair_color', 'eye_color']} items={people} />
       {/* planets */}
-      <CardGroup title='Planets' keyToShow={['population', 'terrain']} items={planets} />
+      <CardGroup title='Planets' id='people-slide' keyToShow={['population', 'terrain']} items={planets} />
       {/* vehicles */}
-      <CardGroup title='Vehicles' keyToShow={['crew', 'passengers', 'cargo_capacity', 'cost_in_credits']} items={vehicles} />
+      <CardGroup title='Vehicles' id='vehicle-slide' keyToShow={['crew', 'passengers', 'cargo_capacity', 'cost_in_credits']} items={vehicles} />
     </>
   );
 };
