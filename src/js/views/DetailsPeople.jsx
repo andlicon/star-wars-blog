@@ -18,7 +18,7 @@ const DetailsPeople = () => {
           alt=''
           className='details-image w-50 p-4' />
         <div className='details-resume-content w-50 p-4'>
-          <h2 className='details-title'>{item.properties?.name}</h2>
+          <h2 className='details-title'>{item?.properties?.name}</h2>
           <p className='details-resume-text'>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, deserunt?
             Expedita consequatur optio, animi possimus eveniet laborum et at voluptate
