@@ -7,6 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       planets: localStorage.planets == undefined ? [] : JSON.parse(localStorage.planets),
       vehicles: localStorage.vehicles == undefined ? [] : JSON.parse(localStorage.vehicles),
       favorites: localStorage.favorites == undefined ? [] : JSON.parse(localStorage.favorites),
+      peopleNext: localStorage.favorites == undefined ? null : JSON.parse(localStorage.peopleNext),
+      planetsNext: localStorage.favorites == undefined ? null : JSON.parse(localStorage.planetsNext),
+      vehiclesNext: localStorage.favorites == undefined ? null : JSON.parse(localStorage.favorites)
     },
     actions: {
       getAllItems: () => {
@@ -21,6 +24,11 @@ const getState = ({ getStore, getActions, setStore }) => {
               const response = await fetch(url);
               const data = await response.json();
 
+              setStore({
+                [endp + 'Next']: data.next
+              });
+              localStorage.setItem(endp + 'Next', JSON.stringify(store[endp + 'Next']));
+
               data.results.forEach(async (element) => {
                 const url = element.url;
 
@@ -30,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({
                   [endp]: [...getStore()[endp], data.result]
                 });
-                window.localStorage.setItem(endp, JSON.stringify(store[endp]));
+                localStorage.setItem(endp, JSON.stringify(store[endp]));
               });
             }
             catch (error) {
