@@ -8,7 +8,7 @@ import Favorites from './Favorites.jsx';
 
 const Header = () => {
   return (
-    <div className='bg-light p-3'>
+    <div className='bg-dark p-3'>
       <div
         className='container
                   d-flex 

@@ -1,14 +1,18 @@
 .logo {
-    height: 3em;
-    margin: 0;
+  height: 3em;
+  margin: 0;
 }
 
 .delete-button {
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
 
 .hr {
-    height: 0.1em !important;
-    background-color: red;
+  height: 0.1em !important;
+  background-color: red;
+}
+
+body {
+  background-image: url(../img/sw-bg.jpg);
 }
