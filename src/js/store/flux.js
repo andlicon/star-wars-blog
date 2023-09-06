@@ -18,37 +18,15 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       getAllItems: () => {
+        const actions = getActions();
         const store = getStore();
         const { endpoints } = store;
 
-        endpoints.forEach(async (endp) => {
-          if (store[endp].length == 0) {
-            const url = `${store.urlBase}/${endp}/`;
+        endpoints.forEach(async (endpoint) => {
+          if (store[endpoint].length == 0) {
+            const url = `${store.urlBase}/${endpoint}/`;
 
-            try {
-              const response = await fetch(url);
-              const data = await response.json();
-
-              setStore({
-                [endp + 'Next']: data.next
-              });
-              localStorage.setItem(endp + 'Next', JSON.stringify(store[endp + 'Next']));
-
-              data.results.forEach(async (element) => {
-                const url = element.url;
-
-                const response = await fetch(url);
-                const data = await response.json();
-
-                setStore({
-                  [endp]: [...getStore()[endp], data.result]
-                });
-                localStorage.setItem(endp, JSON.stringify(store[endp]));
-              });
-            }
-            catch (error) {
-              console.log(error);
-            }
+            actions.getNewPage({ pageUrl: url, endpoint });
           }
         });
       },
