@@ -18,15 +18,13 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Header />
-          <div className='container'>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/people/:id' element={<DetailsPeople />} />
-              <Route path='/planets/:id' element={<DetailsPlanets />} />
-              <Route path='/vehicles/:id' element={<DetailsVehicles />} />
-              <Route path='*' element={<h1>Not found!</h1>} />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/people/:id' element={<DetailsPeople />} />
+            <Route path='/planets/:id' element={<DetailsPlanets />} />
+            <Route path='/vehicles/:id' element={<DetailsVehicles />} />
+            <Route path='*' element={<h1>Not found!</h1>} />
+          </Routes>
         </ScrollToTop>
       </BrowserRouter>
     </div>

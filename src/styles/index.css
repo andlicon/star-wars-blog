@@ -23,9 +23,9 @@ h2 {
 }
 
 body {
-  background-image: url('https://i.pinimg.com/originals/fb/2d/19/fb2d193eeacd7483b652d86d155112d8.jpg');
+  /* background-image: url('https://i.pinimg.com/originals/fb/2d/19/fb2d193eeacd7483b652d86d155112d8.jpg');
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
 }
 
 .highlight {
@@ -41,4 +41,39 @@ body {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+}
+
+.banner {
+  background-image: url('https://wallpaperaccess.com/full/1801922.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  padding: 1em;
+  display: grid;
+  grid-column-start: 1fr;
+  grid-template-rows: 1fr 3em;
+}
+
+.banner h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 4rem;
+  color: #cad5ed;
+  text-align: center;
+}
+
+.br {
+  font-size: 0;
+  display: block;
+}
+
+h1 .min {
+  font-size: 2rem;
+  color: inherit;
+}
+
+.banner .redirect {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }
