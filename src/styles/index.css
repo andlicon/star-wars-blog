@@ -29,3 +29,14 @@ body {
 .highlight {
   color: #f9b424;
 }
+
+.header+.container {
+  min-height: 91.5vh;
+}
+
+.centered {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}

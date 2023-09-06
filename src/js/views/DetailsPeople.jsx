@@ -19,7 +19,7 @@ const DetailsPeople = () => {
           ?
           <Loading />
           :
-          <div className='details'>
+          <div className='details rounded p-2'>
             <div className='details-resume d-flex'>
               <object data={`https://starwars-visualguide.com/assets/img/${nature == 'people' ? 'characters' : nature}/${id}.jpg`} className='details-image w-50 p-4' type="image/jpg">
                 <img className='card-img-top'

@@ -1,11 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
 import '../../styles/home.css';
 // components
 import CardGroup from '../component/CardGroup.jsx';
 
 const Home = () => {
-  const { store: { people, peopleNext, planets, planetsNext, vehicles, vehiclesNext } } = useContext(Context);
+  const { store: { people, planets, vehicles } } = useContext(Context);
+
+  useEffect(() => {
+    document.title = 'Fetching SWAPI'
+  }, []);
 
   return (
     <>
