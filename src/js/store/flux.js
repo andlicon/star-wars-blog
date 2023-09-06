@@ -79,6 +79,31 @@ const getState = ({ getStore, getActions, setStore }) => {
         const obj = store[nature].find((element) => element.uid == id);
 
         return obj;
+      },
+      getNewPage: async (pageUrl, pageEnd) => {
+        const store = getStore();
+
+        if (pageUrl == null) return null
+
+        const responsePage = await fetch(pageUrl);
+        const dataPage = await responsePage.json();
+
+        setStore({
+          [pageEnd + 'Next']: dataPage.next
+        });
+        localStorage.setItem(pageEnd + 'Next', JSON.stringify(store[pageEnd + 'Next']));
+
+        dataPage.results.forEach(async (element) => {
+          const url = element.url;
+
+          const itemResponse = await fetch(url);
+          const itemData = await itemResponse.json();
+
+          setStore({
+            [pageEnd]: [...getStore()[pageEnd], itemData.result]
+          });
+          localStorage.setItem(pageEnd, JSON.stringify(store[pageEnd]));
+        });
       }
     }
   };

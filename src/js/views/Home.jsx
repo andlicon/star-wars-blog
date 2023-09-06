@@ -13,6 +13,7 @@ const Home = () => {
       <CardGroup
         title='Characters'
         id='character-slide'
+        endpoint='people'
         keyToShow={['gender', 'hair_color', 'eye_color']}
         items={people}
         toQuery={peopleNext} />
@@ -20,6 +21,7 @@ const Home = () => {
       <CardGroup
         title='Planets'
         id='people-slide'
+        endpoint='planets'
         keyToShow={['population', 'terrain']}
         items={planets}
         toQuery={planetsNext} />
@@ -27,6 +29,7 @@ const Home = () => {
       <CardGroup
         title='Vehicles'
         id='vehicle-slide'
+        endpoint='vehicles'
         keyToShow={['crew', 'passengers', 'cargo_capacity', 'cost_in_credits']}
         items={vehicles}
         toQuery={vehiclesNext} />

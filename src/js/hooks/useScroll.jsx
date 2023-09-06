@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
+import { Context } from '../store/appContext';
 
-const useScroll = (id) => {
+const useScroll = (id, toQuery, endpoint) => {
+  const { actions } = useContext(Context);
+
   useEffect(() => {
     const element = document.getElementById(id);
     element.addEventListener('scroll', ({ target }) => {
       if (target.offsetWidth + target.scrollLeft >= target.scrollWidth) {
-        console.log('listo');
+        actions.getNewPage(toQuery, endpoint);
       }
     });
   }, []);
