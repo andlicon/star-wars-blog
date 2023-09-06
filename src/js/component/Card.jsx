@@ -12,19 +12,19 @@ const Card = ({ item, keyToShow, type }) => {
   return (
     <div className='card'>
       <img className='card-img-top'
-        src={`https://starwars-visualguide.com/assets/img/${type.toLowerCase()}/${item.uid}.jpg`}
-        alt={`${properties.name} image`} />
+        src={`https://starwars-visualguide.com/assets/img/${type.toLowerCase()}/${item?.uid}.jpg`}
+        alt={`${properties?.name} image`} />
       <div className='card-body'>
         <h5 className='card-title'>
           {
-            properties.name
+            properties?.name
           }
         </h5>
         <div className='card-content mb-3'>
           {
             (keyToShow).map((key, index) => {
               return (
-                <p className='card-text' key={`${item._id}-${index}`}>
+                <p className='card-text' key={`${item?._id}-${index}`}>
                   <span className='card-text--bold'>
                     {
                       key.replaceAll('_', ' ')
@@ -40,7 +40,7 @@ const Card = ({ item, keyToShow, type }) => {
         </div>
         <div className='card__interact d-flex justify-content-between'>
           <Link
-            to={properties.url.split(/https:.+\/api\//)[1]}
+            to={properties?.url?.split(/https:.+\/api\//)[1]}
             className='btn btn-outline-primary'>
             Learn more!
           </Link>

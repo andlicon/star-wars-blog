@@ -1,3 +1,8 @@
+import {
+  getItem,
+  getAllItem
+} from '../services/items';
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -80,30 +85,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         return obj;
       },
-      getNewPage: async (pageUrl, pageEnd) => {
+      getNewPage: async ({ pageUrl, endpoint }) => {
         const store = getStore();
+        const page = await getItem({ pageUrl });
 
-        if (pageUrl == null) return null
+        if (page == null) return null;
 
-        const responsePage = await fetch(pageUrl);
-        const dataPage = await responsePage.json();
+        const nextPage = page.next;
+        const results = page.results;
 
         setStore({
-          [pageEnd + 'Next']: dataPage.next
+          [endpoint + 'Next']: nextPage
         });
-        localStorage.setItem(pageEnd + 'Next', JSON.stringify(store[pageEnd + 'Next']));
+        localStorage.setItem(endpoint + 'Next', JSON.stringify(nextPage));
 
-        dataPage.results.forEach(async (element) => {
-          const url = element.url;
+        const urlList = results.map(item => item.url);
+        const allItem = await getAllItem({ urlList });
+        const allResults = allItem.map(item => item.result)
 
-          const itemResponse = await fetch(url);
-          const itemData = await itemResponse.json();
-
-          setStore({
-            [pageEnd]: [...getStore()[pageEnd], itemData.result]
-          });
-          localStorage.setItem(pageEnd, JSON.stringify(store[pageEnd]));
+        const newResultList = store[endpoint].concat(allResults);
+        setStore({
+          [endpoint]: newResultList
         });
+        localStorage.setItem(endpoint, JSON.stringify(newResultList));
+
       }
     }
   };

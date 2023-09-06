@@ -9,9 +9,8 @@ const CardGroup = ({
   title,
   keyToShow,
   id,
-  toQuery,
   endpoint }) => {
-  const { } = useScroll(id, toQuery, endpoint);
+  const { } = useScroll(id, endpoint);
 
   return (
     <div className='cardGroup my-4' id={id}>
