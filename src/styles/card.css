@@ -14,8 +14,18 @@
   object-position: 50% 10%;
 }
 
+.card-content {
+  padding-top: 5px;
+}
+
+.card-body {
+  border: 1px solid white;
+}
+
 .card-title {
   font-weight: bold;
+  padding-bottom: 2px;
+  border-bottom: 1px solid white;
 }
 
 .card-text {
@@ -24,4 +34,8 @@
 
 .card-text--bold {
   font-weight: bold;
+}
+
+.card-title {
+  text-align: center;
 }

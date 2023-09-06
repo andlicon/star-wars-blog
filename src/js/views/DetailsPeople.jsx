@@ -21,10 +21,11 @@ const DetailsPeople = () => {
           :
           <div className='details'>
             <div className='details-resume d-flex'>
-              <img
-                src={`https://starwars-visualguide.com/assets/img/${nature == 'people' ? 'characters' : nature}/${id}.jpg`}
-                alt=''
-                className='details-image w-50 p-4' />
+              <object data={`https://starwars-visualguide.com/assets/img/${nature == 'people' ? 'characters' : nature}/${id}.jpg`} className='details-image w-50 p-4' type="image/jpg">
+                <img className='card-img-top'
+                  src='https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png'
+                  alt={`${id} image`} />
+              </object>
               <div className='details-resume-content w-50 p-4'>
                 <h2 className='details-title'>{item?.properties?.name}</h2>
                 <p className='details-resume-text'>

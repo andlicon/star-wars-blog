@@ -14,9 +14,11 @@ const Card = ({ item, keyToShow, type }) => {
 
   return (
     <div className='card'>
-      <img className='card-img-top'
-        src={`https://starwars-visualguide.com/assets/img/${type.toLowerCase()}/${item?.uid}.jpg`}
-        alt={`${properties?.name} image`} />
+      <object data={`https://starwars-visualguide.com/assets/img/${type.toLowerCase()}/${item?.uid}.jpg`} type="image/jpg">
+        <img className='card-img-top'
+          src='https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png'
+          alt={`${properties?.name} image`} />
+      </object>
       <div className='card-body'>
         <h5 className='card-title'>
           {
