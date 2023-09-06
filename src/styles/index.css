@@ -1,5 +1,10 @@
 * {
   font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+h2 {
+  margin-bottom: 0;
 }
 
 .logo {
@@ -19,4 +24,8 @@
 
 body {
   background-image: url('https://i.pinimg.com/originals/fb/2d/19/fb2d193eeacd7483b652d86d155112d8.jpg');
+}
+
+.highlight {
+  color: #f9b424;
 }

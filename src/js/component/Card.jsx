@@ -1,7 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../store/appContext';
 import { Link } from 'react-router-dom'
 import '../../styles/card.css';
-import { Context } from '../store/appContext';
+import {
+  capitalize
+} from '../services/string';
 
 const Card = ({ item, keyToShow, type }) => {
   // Context
@@ -23,15 +26,18 @@ const Card = ({ item, keyToShow, type }) => {
         <div className='card-content mb-3'>
           {
             (keyToShow).map((key, index) => {
+              const attribute = capitalize(key.replaceAll('_', ' '));
+              const value = capitalize(properties[key]);
+
               return (
                 <p className='card-text' key={`${item?._id}-${index}`}>
                   <span className='card-text--bold'>
                     {
-                      key.replaceAll('_', ' ')
+                      attribute
                     }
                   </span>:
                   {
-                    ` ${properties[key]}`
+                    ` ${value}`
                   }
                 </p>
               )

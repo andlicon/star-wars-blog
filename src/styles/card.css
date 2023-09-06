@@ -1,5 +1,11 @@
 .card {
   width: 400px;
+  border: 1px solid lightgray;
+  background-color: #1B2731;
+  box-shadow: 0px 0px 3px 3px #adb8c2;
+
+  background: rgb(58, 88, 113);
+  background: radial-gradient(circle, rgba(58, 88, 113, 1) 0%, rgba(60, 102, 136, 1) 73%, rgba(62, 84, 102, 1) 100%);
 }
 
 .card img {
@@ -14,4 +20,8 @@
 
 .card-text {
   margin: 0;
+}
+
+.card-text--bold {
+  font-weight: bold;
 }

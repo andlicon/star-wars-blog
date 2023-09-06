@@ -2,6 +2,8 @@
     overflow-x: scroll;
     background-color: white;
     position: relative;
+    background-color: #151516;
+    border: 1px solid white;
 }
 
 .cardGroup__content {
@@ -20,4 +22,7 @@
 .cardGroup__title {
     position: sticky;
     left: 0;
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 600;
 }

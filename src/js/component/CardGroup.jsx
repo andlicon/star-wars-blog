@@ -13,8 +13,8 @@ const CardGroup = ({
   const { } = useScroll(id, endpoint);
 
   return (
-    <div className='cardGroup my-4 p-3 rounded' id={id}>
-      <h2 className='cardGroup__title text-danger'>
+    <div className='cardGroup my-4 p-3' id={id}>
+      <h2 className='cardGroup__title highlight'>
         {
           title
         }
