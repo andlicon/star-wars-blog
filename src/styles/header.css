@@ -1,0 +1,9 @@
+.header {
+    background-color: rgba(0, 0, 0, 0.822);
+    background-color: black;
+    border-bottom: 1px solid white;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}

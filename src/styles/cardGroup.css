@@ -1,5 +1,7 @@
 .cardGroup {
     overflow-x: scroll;
+    background-color: white;
+    position: relative;
 }
 
 .cardGroup__content {
@@ -13,4 +15,9 @@
     flex-basis: 400px;
     flex-grow: 0;
     flex-shrink: 0;
+}
+
+.cardGroup__title {
+    position: sticky;
+    left: 0;
 }
