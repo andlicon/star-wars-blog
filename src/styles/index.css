@@ -1,3 +1,8 @@
+:root {
+  --font-color-light: #CEDEF2;
+  --color-light: #4A678C;
+}
+
 * {
   font-family: 'Roboto', sans-serif;
   color: white;
@@ -58,7 +63,7 @@ body {
 .banner h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 4rem;
-  color: #cad5ed;
+  color: var(--font-color-light);
   text-align: center;
 }
 
@@ -76,4 +81,24 @@ h1 .min {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+}
+
+.button {
+  background-color: #1a1c4073;
+  color: var(--font-color-light);
+  max-height: 2.3em;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid #1a1c4073;
+  border-radius: .5rem;
+  transition: all .3s ease-in-out;
+}
+
+.button:hover {
+  color: white;
+  background-color: #1A1C40;
+  border: 1px solid #1A1C40;
 }

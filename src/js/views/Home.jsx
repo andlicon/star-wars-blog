@@ -3,6 +3,7 @@ import { Context } from '../store/appContext';
 import '../../styles/home.css';
 // components
 import CardGroup from '../component/CardGroup.jsx';
+import Banner from '../component/Banner.jsx';
 
 const Home = () => {
   const { store: { people, planets, vehicles } } = useContext(Context);
@@ -13,15 +14,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='banner'>
-        <h1>Explore the universe</h1>
-        <div className='redirect container'>
-          <a href="#character-slide">Characters</a>
-          <a href="#people-slide">Planets</a>
-          <a href="#vehicle-slide">Vehicles</a>
-        </div>
-      </div>
-      {/* https://i.pinimg.com/564x/4a/a9/9b/4aa99b6ad2d2cbc7cb04a41571885a8f.jpg */}
+      <Banner />
       {/* characters */}
       <CardGroup
         title='Characters'
