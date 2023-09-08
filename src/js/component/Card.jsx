@@ -55,7 +55,7 @@ const Card = ({ item, keyToShow, type }) => {
           <button
             className='btn btn-outline-warning'
             onClick={() => updateFavorite(item)} >
-            <i className={`bi ${isFavorite(item) ? 'bi-heart-fill' : 'bi-heart'}`}></i>
+            <i className={`bi text-warning ${isFavorite(item) ? 'bi-heart-fill' : 'bi-heart'}`}></i>
           </button>
         </div>
       </div>

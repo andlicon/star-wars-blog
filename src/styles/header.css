@@ -1,9 +1,28 @@
 .header {
     background-color: rgba(0, 0, 0, 0.822);
-    background-color: black;
+    background-color: #12121a;
     border-bottom: 1px solid white;
 
     position: sticky;
     top: 0;
     z-index: 10;
+}
+
+.favorite {
+    background-color: #1A1C40;
+    color: #CEDEF2;
+}
+
+.favorite span {
+    color: #CEDEF2;
+}
+
+.favorite:hover,
+.favorite:hover span {
+    color: white;
+}
+
+.favorite span {
+    border: none;
+    background-color: #202352;
 }

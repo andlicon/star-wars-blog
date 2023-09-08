@@ -10,12 +10,12 @@ const Favorites = () => {
   return (
     <div className='dropdown'>
       <button
-        className='btn btn-primary dropdown-toggle px-2'
+        className='btn favorite dropdown-toggle px-2'
         type='button'
         data-bs-toggle='dropdown'
         aria-expanded='false'>
         Favorites
-        <span className='btn btn-secondary mx-2'>
+        <span className='rounded mx-2'>
           {
             favorites.length
           }
@@ -38,7 +38,7 @@ const Favorites = () => {
                   <button
                     className='delete-button'
                     onClick={() => updateFavorite(item)} >
-                    <i className='bi bi-trash-fill'></i>
+                    <i className='bi bi-trash-fill text-danger'></i>
                   </button>
                 </li>
               )
