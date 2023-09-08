@@ -12,7 +12,7 @@ const DetailsVehicles = () => {
     isLoading } = useDetails(id, 'vehicles');
 
   return (
-    <>
+    <div className='container'>
       {
         isLoading
           ?
@@ -79,7 +79,7 @@ const DetailsVehicles = () => {
             </div>
           </>
       }
-    </>
+    </div>
   );
 };
 export default DetailsVehicles;

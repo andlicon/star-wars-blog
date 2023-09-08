@@ -13,7 +13,7 @@ const DetailsPlanets = () => {
     isLoading } = useDetails(id, 'planets');
 
   return (
-    <>
+    <div className='container'>
       {
         isLoading
           ?
@@ -80,7 +80,7 @@ const DetailsPlanets = () => {
             </div>
           </>
       }
-    </>
+    </div>
   );
 };
 export default DetailsPlanets;
